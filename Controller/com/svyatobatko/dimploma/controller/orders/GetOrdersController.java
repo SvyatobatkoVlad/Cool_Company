@@ -14,18 +14,17 @@ public class GetOrdersController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private OrdersDao ordersDao;
-	
-	
+
 	{
 		ordersDao = DefaultOrdersDao.getInstance();
 	}
 
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		OrdersData orders = ordersDao.getOrdersById(Integer.valueOf(request.getParameter("id")));
 		response.getWriter().println(orders);
-				
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		// response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 }

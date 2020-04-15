@@ -15,6 +15,7 @@ import com.svyatobatko.dimploma.models.Role;
 import com.svyatobatko.dimploma.models.UserData;
 
 public class GetComtrollerLogin extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 	public static final String LOGGED_IN_USER_ATTRIBUTE = "loggedInUser";
 
@@ -25,16 +26,17 @@ public class GetComtrollerLogin extends HttpServlet {
 			UserData user = (UserData) session.getAttribute(LOGGED_IN_USER_ATTRIBUTE);
 			redirectUserByRole(response, user);
 		} else {
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");
 			rd.forward(request, response);
 		}
 	}
+	
 
 	private void redirectUserByRole(HttpServletResponse response, UserData user) throws IOException {
 		if (user.getRole() == Role.ADMIN) {
-			response.sendRedirect(getServletContext().getContextPath() + "/admin");
+			response.sendRedirect(getServletContext().getContextPath() + "/index.jsp");
 		} else {
-			response.sendRedirect(getServletContext().getContextPath() + "/Client");
+			response.sendRedirect(getServletContext().getContextPath() + "/index.jsp");
 		}
 	}
 
@@ -49,15 +51,18 @@ public class GetComtrollerLogin extends HttpServlet {
 
 		if (login.isEmpty() || password.isEmpty()) {
 			request.setAttribute("message", "Поля не могут быть пустыми");
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("/Login.jsp").forward(request, response);
 
 		} else if (user == null) {
 			request.setAttribute("message", "Пользователь не существует");
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("/Login.jsp").forward(request, response);
 
 		} else if (!user.getPassword().equals(password)) {
 			request.setAttribute("message", "Неправильный пароль");
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("/Login.jsp").forward(request, response);
+			
+			
+			
 			/*
 			 * } else if (user.getRole()==Role.CLIENT) { request.setAttribute("user", user);
 			 * request.getRequestDispatcher("Client.jsp").forward(request, response);
@@ -69,6 +74,7 @@ public class GetComtrollerLogin extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute(LOGGED_IN_USER_ATTRIBUTE, user);
 			redirectUserByRole(response, user);
+
 		}
 
 	}

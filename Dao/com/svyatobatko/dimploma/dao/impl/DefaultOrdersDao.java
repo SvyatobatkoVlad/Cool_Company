@@ -14,22 +14,17 @@ import com.svyatobatko.dimploma.models.OrdersData;
 
 public class DefaultOrdersDao implements OrdersDao {
 
-	
 	private static final String SELECT_ORDERS_BY_ID = "SELECT * FROM orders WHERE ID_orders = ?";
-	/*
-	private static final String URL = "jdbc:mysql://localhost:3306/cool_company?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8";
-	private static final String USER = "root";
-	private static final String PASSWORD = "root";
-*/
 	private static DefaultOrdersDao instance;
 	private DataSource ds;
-	
+
 	private DefaultOrdersDao() {
 	}
+
 	{
 		this.ds = DataSourceUtils.getDataSource();
 	}
-	
+
 	public static synchronized DefaultOrdersDao getInstance() {
 		if (instance == null) {
 			instance = new DefaultOrdersDao();
@@ -37,13 +32,11 @@ public class DefaultOrdersDao implements OrdersDao {
 		return instance;
 	}
 
-	
 	@Override
 	public OrdersData getOrdersById(int id) {
 		OrdersData orders = null;
-		try (Connection conn = ds.getConnection();
-				PreparedStatement ps = conn.prepareStatement(SELECT_ORDERS_BY_ID)) {
-			
+		try (Connection conn = ds.getConnection(); PreparedStatement ps = conn.prepareStatement(SELECT_ORDERS_BY_ID)) {
+
 			ps.setInt(1, id);
 			try (ResultSet rs = ps.executeQuery();) {
 				if (rs.next()) {
@@ -53,9 +46,7 @@ public class DefaultOrdersDao implements OrdersDao {
 					orders.setId(rs.getInt("ID_orders"));
 					orders.setID_user(rs.getInt("ID_user"));
 					orders.setID_tour(rs.getInt("ID_tour"));
-					
-					
-				
+
 				}
 			}
 		} catch (SQLException e) {
@@ -63,16 +54,4 @@ public class DefaultOrdersDao implements OrdersDao {
 		}
 		return orders;
 	}
-	/*
-	private Connection getConnection() {
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			return DriverManager.getConnection(URL, USER, PASSWORD);
-		} catch (SQLException | ClassNotFoundException e) {
-			throw new RuntimeException(e);
-		}
-	}
-	*/
 }
-
-

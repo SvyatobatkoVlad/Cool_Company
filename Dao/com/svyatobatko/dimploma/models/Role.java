@@ -4,10 +4,10 @@ import com.svyatobatko.dimploma.models.Role;
 
 public enum Role {
 	ADMIN, CLIENT, CONTENT_MANAGER;
-	
+
 	public static int getRoleIndex(Role role) {
 		return role.ordinal();
-}
+	}
 
 	public static Role getRoleById(int roleID) {
 

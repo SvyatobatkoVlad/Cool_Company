@@ -4,10 +4,10 @@ import com.svyatobatko.dimploma.models.Cities;
 
 public enum Cities {
 	Kharkiv, Milan, Paris;
-	
+
 	public static int getCitiesIndex(Cities cities) {
 		return cities.ordinal();
-}
+	}
 
 	public static Cities getCitiesById(int ID_Cities) {
 
