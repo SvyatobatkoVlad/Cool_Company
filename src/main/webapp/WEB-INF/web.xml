@@ -99,9 +99,37 @@
   	<servlet-name>RegisterServlet</servlet-name>
   	<servlet-class>com.svyatobatko.dimploma.controller.register.RegisterServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>GetLogin</display-name>
+  	<servlet-name>GetLogin</servlet-name>
+  	<servlet-class>com.svyatobatko.diploma.controller.login.GetLogin</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>UserServlet</display-name>
+  	<servlet-name>UserServlet</servlet-name>
+  	<servlet-class>com.svyatobatko.UserServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>TourServlet</display-name>
+  	<servlet-name>TourServlet</servlet-name>
+  	<servlet-class>com.svyatobatko.TourServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>EditUser</display-name>
+  	<servlet-name>EditUser</servlet-name>
+  	<servlet-class>com.svyatobatko.dimploma.controller.register.EditUser</servlet-class>
+  </servlet>
  <servlet-mapping>
   	<servlet-name>GetComtrollerLogin</servlet-name>
-  	<url-pattern>/public/Login</url-pattern>
+  	<url-pattern>/Login</url-pattern>
   </servlet-mapping>
   
   <servlet-mapping>
@@ -146,7 +174,23 @@
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>RegisterServlet</servlet-name>
-  	<url-pattern>/public/signup2</url-pattern>
+  	<url-pattern>/signup2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>GetLogin</servlet-name>
+  	<url-pattern>/GetLogin</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UserServlet</servlet-name>
+  	<url-pattern>/UserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>TourServlet</servlet-name>
+  	<url-pattern>/TourServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EditUser</servlet-name>
+  	<url-pattern>/EditUser</url-pattern>
   </servlet-mapping>
   <session-config>
   <session-timeout>15</session-timeout>

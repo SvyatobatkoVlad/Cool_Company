@@ -45,6 +45,4 @@ public class HotelData {
 		return "HotelData [id=" + id + ", Hotels_name=" + Hotels_name + ", Stars=" + Stars + ", cities=" + cities + "]";
 	}
 
-	
-	
 }
