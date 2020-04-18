@@ -1,5 +1,8 @@
 package com.svyatobatko.dimploma.models;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 import com.svyatobatko.dimploma.models.Role;
 
 public class UserData {
@@ -12,7 +15,8 @@ public class UserData {
 	private String Telephone;
 	private String dateOfBirth;
 	private String referId;
-	
+	private List<UserTourData> tours;
+	private BigDecimal money;
 
 	public String getId() {
 		return id;
@@ -87,5 +91,22 @@ public class UserData {
 	}
 
 	public void setReferId(String value) { this.referId = value; }
+
+	public List<UserTourData> getTours() {
+		return tours;
+	}
+
+	public void setTours(List<UserTourData> tours) {
+		this.tours = tours;
+	}
+
+	public BigDecimal getMoney() {
+		return money;
+	}
+
+	public void setMoney(BigDecimal money) {
+		this.money = money;
+	}
+	
 	 
 }
